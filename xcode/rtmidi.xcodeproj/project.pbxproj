@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F24887D2A5459BE00C99551 /* rtmidi_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F24887A2A5459BE00C99551 /* rtmidi_c.cpp */; };
+		4F24887E2A5459BE00C99551 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F24887B2A5459BE00C99551 /* RtMidi.cpp */; };
+		4F2488812A545E6E00C99551 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488802A545E6E00C99551 /* CoreAudio.framework */; };
+		4F2488832A545E7A00C99551 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488822A545E7900C99551 /* CoreFoundation.framework */; };
+		4F2488852A545E8300C99551 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488842A545E8300C99551 /* CoreMIDI.framework */; };
+		4F2488B72A54762F00C99551 /* rtmidi_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F24887A2A5459BE00C99551 /* rtmidi_c.cpp */; };
+		4F2488B82A54762F00C99551 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F24887B2A5459BE00C99551 /* RtMidi.cpp */; };
+		4F2488B92A5476C400C99551 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488802A545E6E00C99551 /* CoreAudio.framework */; };
+		4F2488BA2A5476CD00C99551 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488822A545E7900C99551 /* CoreFoundation.framework */; };
+		4F2488BB2A5476D500C99551 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2488842A545E8300C99551 /* CoreMIDI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4F24886B2A54584400C99551 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4F24886D2A54584400C99551 /* librtmidi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librtmidi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2488792A5459BE00C99551 /* rtmidi_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rtmidi_c.h; path = ../rtmidi_c.h; sourceTree = "<group>"; };
+		4F24887A2A5459BE00C99551 /* rtmidi_c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rtmidi_c.cpp; path = ../rtmidi_c.cpp; sourceTree = "<group>"; };
+		4F24887B2A5459BE00C99551 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = ../RtMidi.cpp; sourceTree = "<group>"; };
+		4F24887C2A5459BE00C99551 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = ../RtMidi.h; sourceTree = "<group>"; };
+		4F2488802A545E6E00C99551 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		4F2488822A545E7900C99551 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		4F2488842A545E8300C99551 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/CoreMIDI.framework; sourceTree = DEVELOPER_DIR; };
+		4F2488B32A54762100C99551 /* librtmidi_shared.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = librtmidi_shared.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F24886A2A54584400C99551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F2488852A545E8300C99551 /* CoreMIDI.framework in Frameworks */,
+				4F2488832A545E7A00C99551 /* CoreFoundation.framework in Frameworks */,
+				4F2488812A545E6E00C99551 /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F2488B12A54762100C99551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F2488BB2A5476D500C99551 /* CoreMIDI.framework in Frameworks */,
+				4F2488BA2A5476CD00C99551 /* CoreFoundation.framework in Frameworks */,
+				4F2488B92A5476C400C99551 /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F2488642A54584400C99551 = {
+			isa = PBXGroup;
+			children = (
+				4F24887A2A5459BE00C99551 /* rtmidi_c.cpp */,
+				4F2488792A5459BE00C99551 /* rtmidi_c.h */,
+				4F24887B2A5459BE00C99551 /* RtMidi.cpp */,
+				4F24887C2A5459BE00C99551 /* RtMidi.h */,
+				4F24888C2A5474D000C99551 /* rtmidi_shared */,
+				4F24886E2A54584400C99551 /* Products */,
+				4F24887F2A545E6E00C99551 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4F24886E2A54584400C99551 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F24886D2A54584400C99551 /* librtmidi.a */,
+				4F2488B32A54762100C99551 /* librtmidi_shared.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F24887F2A545E6E00C99551 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F2488842A545E8300C99551 /* CoreMIDI.framework */,
+				4F2488822A545E7900C99551 /* CoreFoundation.framework */,
+				4F2488802A545E6E00C99551 /* CoreAudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F24888C2A5474D000C99551 /* rtmidi_shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = rtmidi_shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4F2488AF2A54762100C99551 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4F24886C2A54584400C99551 /* rtmidi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F2488762A54584400C99551 /* Build configuration list for PBXNativeTarget "rtmidi" */;
+			buildPhases = (
+				4F2488692A54584400C99551 /* Sources */,
+				4F24886A2A54584400C99551 /* Frameworks */,
+				4F24886B2A54584400C99551 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rtmidi;
+			productName = rtmidi;
+			productReference = 4F24886D2A54584400C99551 /* librtmidi.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4F2488B22A54762100C99551 /* rtmidi_shared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F2488B42A54762100C99551 /* Build configuration list for PBXNativeTarget "rtmidi_shared" */;
+			buildPhases = (
+				4F2488AF2A54762100C99551 /* Headers */,
+				4F2488B02A54762100C99551 /* Sources */,
+				4F2488B12A54762100C99551 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rtmidi_shared;
+			productName = rtmidi_shared;
+			productReference = 4F2488B32A54762100C99551 /* librtmidi_shared.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F2488652A54584400C99551 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					4F24886C2A54584400C99551 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					4F2488B22A54762100C99551 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 4F2488682A54584400C99551 /* Build configuration list for PBXProject "rtmidi" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F2488642A54584400C99551;
+			productRefGroup = 4F24886E2A54584400C99551 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F24886C2A54584400C99551 /* rtmidi */,
+				4F2488B22A54762100C99551 /* rtmidi_shared */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F2488692A54584400C99551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F24887E2A5459BE00C99551 /* RtMidi.cpp in Sources */,
+				4F24887D2A5459BE00C99551 /* rtmidi_c.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F2488B02A54762100C99551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F2488B82A54762F00C99551 /* RtMidi.cpp in Sources */,
+				4F2488B72A54762F00C99551 /* rtmidi_c.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4F2488742A54584400C99551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4F2488752A54584400C99551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F2488772A54584400C99551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L59JFSX5QN;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F2488782A54584400C99551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L59JFSX5QN;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4F2488B52A54762100C99551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L59JFSX5QN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4F2488B62A54762100C99551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L59JFSX5QN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F2488682A54584400C99551 /* Build configuration list for PBXProject "rtmidi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F2488742A54584400C99551 /* Debug */,
+				4F2488752A54584400C99551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F2488762A54584400C99551 /* Build configuration list for PBXNativeTarget "rtmidi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F2488772A54584400C99551 /* Debug */,
+				4F2488782A54584400C99551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F2488B42A54762100C99551 /* Build configuration list for PBXNativeTarget "rtmidi_shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F2488B52A54762100C99551 /* Debug */,
+				4F2488B62A54762100C99551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F2488652A54584400C99551 /* Project object */;
+}
