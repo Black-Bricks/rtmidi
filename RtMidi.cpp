@@ -39,6 +39,7 @@
 
 #include "RtMidi.h"
 #include <sstream>
+#include <iomanip>
 #if defined(__APPLE__)
 #include <TargetConditionals.h>
 #endif
@@ -69,6 +70,8 @@
   #define EndianS32_BtoN(n) n
 
 #endif
+
+//#define MIDI_TEST_LOGS
 
 // Default for Windows is to add an identifier to the port names; this
 // flag can be defined (e.g. in your project file) to disable this behaviour.
@@ -912,8 +915,29 @@ void RtMidi_disposeCoreMidiClientSingleton(){
 //  Class Definitions: MidiInCore
 //*********************************************************************//
 
+#if defined(MIDI_TEST_LOGS)
+static void printMIDIPacket(const MIDIPacket& packet) {
+    std::cout << "Timestamp: " << packet.timeStamp << std::endl;
+    std::cout << "Length: " << packet.length << std::endl;
+    std::cout << "Data: ";
+    
+    // Print only the bytes up to the specified length
+    for(UInt16 i = 0; i < packet.length; ++i) {
+        std::cout << std::hex << std::setw(2) << std::setfill('0')
+                  << static_cast<int>(packet.data[i]) << " ";
+    }
+    
+    std::cout << std::dec << std::endl;  // Reset to decimal output
+}
+#endif
+
 static void midiInputCallback( const MIDIPacketList *list, void *procRef, void */*srcRef*/ )
 {
+#if defined(MIDI_TEST_LOGS)
+    printf("rtmidi: START CALLBACK\n");
+    printf("rtmidi: midiInputCallback\n");
+#endif
+
   MidiInApi::RtMidiInData *data = static_cast<MidiInApi::RtMidiInData *> (procRef);
   CoreMidiData *apiData = static_cast<CoreMidiData *> (data->apiData);
 
@@ -923,6 +947,10 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
 
   bool& continueSysex = data->continueSysex;
   MidiInApi::MidiMessage& message = data->message;
+
+#if defined(MIDI_TEST_LOGS)
+    printf("rtmidi: list->numPackets = %d\n", list->numPackets);
+#endif
 
   const MIDIPacket *packet = &list->packet[0];
   for ( unsigned int i=0; i<list->numPackets; ++i ) {
@@ -938,10 +966,16 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
 
     nBytes = packet->length;
     if ( nBytes == 0 ) {
+        printf("rtmidi: nBytes == 0\n");
+        printf("rtmidi: MIDIPacketNext\n");
       packet = MIDIPacketNext( packet );
       continue;
     }
 
+#if defined(MIDI_TEST_LOGS)
+      printMIDIPacket(*packet);
+#endif
+      
     // Calculate time stamp.
     if ( data->firstMessage ) {
       message.timeStamp = 0.0;
@@ -957,28 +991,56 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
       if ( !continueSysex )
         message.timeStamp = time * 0.000000001;
     }
+      
+#if defined(MIDI_TEST_LOGS)
+      printf("rtmidi: message.timeStamp = %f\n", message.timeStamp);
+      printf("rtmidi: data->ignoreFlags = %d\n", data->ignoreFlags);
+      printf("rtmidi: data->usingCallback = %d\n", data->usingCallback);
+#endif
 
+      unsigned char ignore_ignore_flags = 0x00;
+      
     // Track whether any non-filtered messages were found in this
     // packet for timestamp calculation
     bool foundNonFiltered = false;
 
     iByte = 0;
     if ( continueSysex ) {
+#if defined(MIDI_TEST_LOGS)
+        printf("rtmidi: continueSysex message\n");
+#endif
       // We have a continuing, segmented sysex message.
-      if ( !( data->ignoreFlags & 0x01 ) ) {
+      if ( !( data->ignoreFlags & ignore_ignore_flags & 0x01 ) ) {
+#if defined(MIDI_TEST_LOGS)
+          printf("rtmidi: copy packet\n");
+#endif
         // If we're not ignoring sysex messages, copy the entire packet.
         for ( unsigned int j=0; j<nBytes; ++j )
           message.bytes.push_back( packet->data[j] );
       }
       continueSysex = packet->data[nBytes-1] != 0xF7;
 
-      if ( !( data->ignoreFlags & 0x01 ) && !continueSysex ) {
+#if defined(MIDI_TEST_LOGS)
+        if (continueSysex) {
+            printf("rtmidi: continueSysex == true\n");
+        } else {
+            printf("rtmidi: continueSysex == false\n");
+        }
+#endif
+        
+      if ( !( data->ignoreFlags & ignore_ignore_flags & 0x01 ) && !continueSysex ) {
         // If not a continuing sysex message, invoke the user callback function or queue the message.
         if ( data->usingCallback ) {
+#if defined(MIDI_TEST_LOGS)
+            printf("rtmidi: userCallback1\n");
+#endif
           RtMidiIn::RtMidiCallback callback = (RtMidiIn::RtMidiCallback) data->userCallback;
           callback( message.timeStamp, &message.bytes, data->userData );
         }
         else {
+#if defined(MIDI_TEST_LOGS)
+            printf("rtmidi: !userCallback1\n");
+#endif
           // As long as we haven't reached our queue size limit, push the message.
           if ( !data->queue.push( message ) )
             std::cerr << "\nMidiInCore: message queue limit reached!!\n\n";
@@ -987,6 +1049,10 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
       }
     }
     else {
+#if defined(MIDI_TEST_LOGS)
+        printf("rtmidi: first message\n");
+#endif
+
       while ( iByte < nBytes ) {
         size = 0;
         // We are expecting that the next byte in the packet is a status byte.
@@ -998,7 +1064,7 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
         else if ( status < 0xF0 ) size = 3;
         else if ( status == 0xF0 ) {
           // A MIDI sysex
-          if ( data->ignoreFlags & 0x01 ) {
+          if ( data->ignoreFlags & ignore_ignore_flags & 0x01 ) {
             size = 0;
             iByte = nBytes;
           }
@@ -1007,7 +1073,7 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
         }
         else if ( status == 0xF1 ) {
           // A MIDI time code message
-          if ( data->ignoreFlags & 0x02 ) {
+          if ( data->ignoreFlags & ignore_ignore_flags & 0x02 ) {
             size = 0;
             iByte += 2;
           }
@@ -1015,18 +1081,26 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
         }
         else if ( status == 0xF2 ) size = 3;
         else if ( status == 0xF3 ) size = 2;
-        else if ( status == 0xF8 && ( data->ignoreFlags & 0x02 ) ) {
+        else if ( status == 0xF8 && ( data->ignoreFlags & ignore_ignore_flags & 0x02 ) ) {
           // A MIDI timing tick message and we're ignoring it.
           size = 0;
           iByte += 1;
         }
-        else if ( status == 0xFE && ( data->ignoreFlags & 0x04 ) ) {
+        else if ( status == 0xFE && ( data->ignoreFlags & ignore_ignore_flags & 0x04 ) ) {
           // A MIDI active sensing message and we're ignoring it.
           size = 0;
           iByte += 1;
         }
         else size = 1;
 
+#if defined(MIDI_TEST_LOGS)
+          if (continueSysex) {
+              printf("rtmidi: continueSysex == true\n");
+          } else {
+              printf("rtmidi: continueSysex == false\n");
+          }
+#endif
+          
         // Copy the MIDI data to our vector.
         if ( size ) {
           foundNonFiltered = true;
@@ -1034,10 +1108,16 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
           if ( !continueSysex ) {
             // If not a continuing sysex message, invoke the user callback function or queue the message.
             if ( data->usingCallback ) {
+#if defined(MIDI_TEST_LOGS)
+                printf("rtmidi: userCallback2\n");
+#endif
               RtMidiIn::RtMidiCallback callback = (RtMidiIn::RtMidiCallback) data->userCallback;
               callback( message.timeStamp, &message.bytes, data->userData );
             }
             else {
+#if defined(MIDI_TEST_LOGS)
+                printf("rtmidi: !userCallback2\n");
+#endif
               // As long as we haven't reached our queue size limit, push the message.
               if ( !data->queue.push( message ) )
                 std::cerr << "\nMidiInCore: message queue limit reached!!\n\n";
@@ -1057,6 +1137,9 @@ static void midiInputCallback( const MIDIPacketList *list, void *procRef, void *
       }
     }
 
+#if defined(MIDI_TEST_LOGS)
+      printf("rtmidi: MIDIPacketNext\n");
+#endif
     packet = MIDIPacketNext(packet);
   }
 }
